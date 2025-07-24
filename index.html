@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nexusmarket.com - 미래를 예측하고, 당신의 통찰력으로 수익을 만드세요.</title>
+    <title>nexusmarket - 미래를 예측하고, 당신의 통찰력으로 수익을 만드세요.</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
@@ -46,18 +46,70 @@
         .feature-icon {
             color: #667eea; /* Primary color for icons */
         }
+        /* Hamburger icon styling */
+        .hamburger-menu {
+            display: none; /* Hidden by default */
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+        .hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #e2e8f0;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+        /* Show hamburger menu on small screens */
+        @media (max-width: 767px) { /* md breakpoint is 768px */
+            .hamburger-menu {
+                display: flex;
+            }
+            .navbar-links {
+                display: none; /* Hide navigation links by default on mobile */
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 64px; /* Height of the header */
+                left: 0;
+                background-color: #0d1117;
+                padding: 1rem 0;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                z-index: 20;
+            }
+            .navbar-links.active {
+                display: flex; /* Show when active */
+            }
+            .navbar-links li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-gray-900 py-4 px-6 md:px-12 shadow-lg">
+    <header class="bg-gray-900 py-4 px-6 md:px-12 shadow-lg relative">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold text-white">
-                <span class="gradient-text">nexusmarket</span>.com
+                <span class="gradient-text">nexusmarket</span>
             </div>
-            <nav>
-                <ul class="flex space-x-6">
+            <!-- Hamburger menu button for mobile -->
+            <button class="hamburger-menu md:hidden" id="hamburger-button" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- Navigation links -->
+            <nav class="navbar-links hidden md:flex" id="navbar-links">
+                <ul class="md:flex md:space-x-6">
                     <li><a href="#how-it-works" class="text-gray-300 hover:text-white transition duration-300">작동 방식</a></li>
                     <li><a href="#categories" class="text-gray-300 hover:text-white transition duration-300">카테고리</a></li>
                     <li><a href="#why-us" class="text-gray-300 hover:text-white transition duration-300">왜 nexusmarket?</a></li>
@@ -95,7 +147,7 @@
     <!-- How It Works Section -->
     <section id="how-it-works" class="py-16 px-6 md:py-24 bg-gray-800">
         <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white">nexusmarket.com은 어떻게 작동하나요?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white">nexusmarket은 어떻게 작동하나요?</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Step 1 -->
                 <div class="card p-6 flex flex-col items-center text-center">
@@ -130,7 +182,7 @@
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white">다양한 예측 카테고리</h2>
             <p class="text-lg text-gray-300 mb-10 max-w-3xl mx-auto">
-                nexusmarket.com에서는 당신의 관심사에 맞는 다양한 예측 시장을 만나볼 수 있습니다.
+                nexusmarket에서는 당신의 관심사에 맞는 다양한 예측 시장을 만나볼 수 있습니다.
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Category Card: 경제 -->
@@ -189,7 +241,7 @@
     <!-- Why Us Section -->
     <section id="why-us" class="py-16 px-6 md:py-24 bg-gray-900">
         <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white">왜 nexusmarket.com인가요?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white">왜 nexusmarket인가요?</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Feature: 투명성 -->
                 <div class="card p-6 flex flex-col items-center text-center">
@@ -223,7 +275,7 @@
     <footer class="bg-gray-900 py-8 px-6 md:px-12 text-center text-gray-400">
         <div class="max-w-7xl mx-auto">
             <div class="text-xl font-bold text-white mb-4">
-                <span class="gradient-text">nexusmarket</span>.com
+                <span class="gradient-text">nexusmarket</span>
             </div>
             <p class="mb-4">미래 예측의 중심</p>
             <ul class="flex justify-center space-x-6 mb-4">
@@ -231,9 +283,29 @@
                 <li><a href="#" class="hover:text-white transition duration-300">개인정보처리방침</a></li>
                 <li><a href="#" class="hover:text-white transition duration-300">고객 지원</a></li>
             </ul>
-            <p>&copy; 2025 nexusmarket.com. All rights reserved.</p>
+            <p>&copy; 2025 nexusmarket. All rights reserved.</p>
         </div>
     </footer>
 
+    <script>
+        // JavaScript for mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const navbarLinks = document.getElementById('navbar-links');
+
+            hamburgerButton.addEventListener('click', () => {
+                navbarLinks.classList.toggle('active');
+            });
+
+            // Close navbar when a link is clicked (for smooth scrolling)
+            navbarLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarLinks.classList.contains('active')) {
+                        navbarLinks.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
